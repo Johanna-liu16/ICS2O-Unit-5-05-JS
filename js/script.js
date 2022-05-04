@@ -4,29 +4,31 @@
 // Created on: Mar 2022
 // This file contains the JS functions for index.html
 
+;("use strict")
+
 /**
  * Check servie worker.
  */
 if (navigator.serviceWorker) {
-  navigator.serviceWorker.register("/ICS2O-PWA-Test/sw.js", {
-    scope: "/ICS2O-PWA-Test/",
+  navigator.serviceWorker.register("/ICS2O-Unit-5-02-HTML/sw.js", {
+    scope: "/ICS2O-Unit-5-02-HTML/",
   })
 }
 
-;("use strict")
 /**
- * This function calculates area of a parrallelogram.
+ * This function compares slider with random number.
  */
-function calculate() {
-  // input
-  const length = parseInt(document.getElementById("length-of-pyramid").value)
-  const width = parseInt(document.getElementById("width-of-pyramid").value)
-  const height = parseInt(document.getElementById("height-of-pyramid").value)
+function myButtonClicked() {
+  var sideA = document.getElementById("sideA").value
+  var sideB = document.getElementById("sideB").value
+  var sideC = document.getElementById("sideC").value
 
   // process
-  const volume = (length * width * height) / 3
-
-  // output
-  document.getElementById("answers").innerHTML =
-    "Volume is: " + volume.toFixed(2) + " cm³"
+  if (sideA == sideB && sideB == sideC) {
+      document.getElementById("answer").innerHTML= "Triangle is an equilateral."
+  } else if ( sideA == sideB || sideB == sideC || sideA == sideC) {
+      document.getElementById("answer").innerHTML= "Triangle is an isosceles."
+  } else {
+      document.getElementById("answer").innerHTML= "Triangle is an scalene."
+  }
 }
